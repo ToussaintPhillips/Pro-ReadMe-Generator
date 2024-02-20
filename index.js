@@ -2,6 +2,9 @@ const fs = require("fs");
 const inquirer = require("inquirer");
 
 function generateReadme(answers) {
+  // generate license badge 
+  const licenseBadgeURL = generateLicenseBadgeURL(answers.license);
+
   return `
 # ${answers.title}
 
@@ -9,6 +12,7 @@ function generateReadme(answers) {
 ${answers.description}
 
 ## Table of Contents
+- [Description](#description)
 - [Installation](#installation)
 - [Usage](#usage)
 - [License](#license)
@@ -23,7 +27,9 @@ ${answers.installation}
 ${answers.usage}
 
 ## License
-This project is licensed under the ${answers.license} license.
+![License](${licenseBadgeURL})
+
+${generateLicenseNotice(answers.license)}
 
 ## Contributing
 ${answers.contributing}
@@ -38,7 +44,41 @@ For any questions or feedback, feel free to reach out:
 `;
 }
 
-// array of questions for user
+// function to generate license 
+function generateLicenseBadgeURL(license) {
+
+  switch (license) {
+    case "MIT":
+      return "https://img.shields.io/badge/License-MIT-yellow.svg";
+    case "Apache":
+      return "https://img.shields.io/badge/License-Apache%202.0-blue.svg";
+    case "GPL":
+      return "https://img.shields.io/badge/License-GPLv3-blue.svg";
+    case "BSD":
+      return "https://img.shields.io/badge/License-BSD%203--Clause-blue.svg";
+    default:
+      return "";
+  }
+}
+
+// function to generate license notification
+function generateLicenseNotice(license) {
+
+  switch (license) {
+    case "MIT":
+      return "This project is licensed under the MIT License.";
+    case "Apache":
+      return "This project is licensed under the Apache License 2.0.";
+    case "GPL":
+      return "This project is licensed under the GNU General Public License v3.0.";
+    case "BSD":
+      return "This project is licensed under the BSD 3-Clause License.";
+    default:
+      return "";
+  }
+}
+
+// array of questions for user 
 const questions = [
   {
     type: "input",
