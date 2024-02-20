@@ -8,6 +8,14 @@ function generateReadme(answers) {
 ## Description
 ${answers.description}
 
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [Contributing](#contributing)
+- [Tests](#tests)
+- [Questions](#questions)
+
 ## Installation
 ${answers.installation}
 
@@ -15,7 +23,7 @@ ${answers.installation}
 ${answers.usage}
 
 ## License
-${answers.license}
+This project is licensed under the ${answers.license} license.
 
 ## Contributing
 ${answers.contributing}
@@ -24,7 +32,7 @@ ${answers.contributing}
 ${answers.tests}
 
 ## Questions
-For any questions or feedback, feel free to reach out to me via:
+For any questions or feedback, feel free to reach out:
 - GitHub: [${answers.github}](https://github.com/${answers.github})
 - Email: ${answers.email}
 `;
@@ -53,9 +61,10 @@ const questions = [
     message: "Enter usage information:",
   },
   {
-    type: "input",
+    type: "list",
     name: "license",
-    message: "Enter the license for your project:",
+    message: "Choose a license for your project:",
+    choices: ["MIT", "Apache", "GPL", "BSD"],
   },
   {
     type: "input",
@@ -96,4 +105,3 @@ function init() {
 
 // initialize the program
 init();
-
