@@ -4,8 +4,7 @@ Generate high-quality README.md files for your projects with ease!
 
 ## Video Demo
 
-[![Watch the Video Demo])
-
+[![Watch the Video Demo](Demo_vid.mp4)
 Click the link above to watch the video demonstration of the app.
 
 ## Table of Contents
